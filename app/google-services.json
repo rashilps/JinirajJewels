@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "967965095417",
+    "firebase_url": "https://jinirajjewels.firebaseio.com",
+    "project_id": "jinirajjewels",
+    "storage_bucket": "jinirajjewels.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967965095417:android:4366e3d818f37500",
+        "android_client_info": {
+          "package_name": "com.jinirajjewels.jinirajjewels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967965095417-ta885k6o0f2mfm9m609hfknivvje7e3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLw5DK26qe0prvMs_-T0xvojcf5dqK9Ng"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
