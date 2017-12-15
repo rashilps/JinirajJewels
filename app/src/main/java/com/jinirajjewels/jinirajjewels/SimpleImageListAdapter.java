@@ -4,42 +4,68 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
+import android.widget.TextView;
 
 /**
  * Created by rashil on 24/11/17.
  */
 
-public class SimpleImageListAdapter extends ArrayAdapter {
-    private Context context;
+public class SimpleImageListAdapter extends BaseAdapter {
+    private Context mContext;
+    private final int[] ImageId;
+    private String[] text;
+
     private LayoutInflater inflater;
 
-    private String[] imageUrls;
 
-    public SimpleImageListAdapter(Context context, String[] imageUrls) {
-        super(context, R.layout.listview_item_image, imageUrls);
+    public SimpleImageListAdapter(Context c, int[] ImageId, String[] text) {
+        mContext = c;
+        this.ImageId = ImageId;
+        this.text = text;
 
-        this.context = context;
-        this.imageUrls = imageUrls;
+    }
 
-        inflater = LayoutInflater.from(context);
+
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return text.length;
     }
 
     @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (null == convertView) {
-            convertView = inflater.inflate(R.layout.listview_item_image, parent, false);
+        // TODO Auto-generated method stub
+        View grid;
+        LayoutInflater inflater = (LayoutInflater) mContext
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (convertView == null) {
+
+            grid = new View(mContext);
+            grid = inflater.inflate(R.layout.listview_item_image, null);
+            TextView textView = (TextView) grid.findViewById(R.id.grid_text);
+            ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
+            textView.setText(text[position]);
+            imageView.setImageResource(ImageId[position]);
+        } else {
+            grid = (View) convertView;
         }
 
-        Glide
-                .with(context)
-                .load(imageUrls[position])
-                .into((ImageView) convertView);
-
-
-        return convertView;
+        return grid;
     }
 }

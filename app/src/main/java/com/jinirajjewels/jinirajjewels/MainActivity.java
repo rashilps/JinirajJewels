@@ -1,6 +1,8 @@
 package com.jinirajjewels.jinirajjewels;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,19 +15,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     static final int REQUEST_PERMISSION_KEY = 1;
-    private static final Integer[] XMEN = {R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.f, R.drawable.g};
+    private static final Integer[] XMEN = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra, R.drawable.necklace, R.drawable.pendant};
+    String[] text = {"Rings", "Bangles", "Earrings", "Mangalsutra", "Necklace", "Pendant"};
+    int[] ImageId = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra, R.drawable.necklace, R.drawable.pendant};
+
     private static ViewPager mPager;
     private static DotsIndicator  dotsIndicator;
     private static int currentPage = 0;
+    GridView grid;
+
+
 
 
     private ArrayList<Integer> XMENArray = new ArrayList<Integer>();
@@ -37,12 +48,50 @@ public class MainActivity extends AppCompatActivity
 
         GridView gridView = (GridView) findViewById(R.id.usage_example_gridview);
 
-        gridView.setAdapter(
-                new SimpleImageListAdapter(
-                        MainActivity.this,
-                        ListViewActivity.eatFoodyImages
-                )
-        );
+        SimpleImageListAdapter adapter = new SimpleImageListAdapter(MainActivity.this, ImageId, text);
+        grid=(GridView)findViewById(R.id.usage_example_gridview);
+        grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                switch (position) {
+                    case 0:
+
+                        Intent i = new Intent(getApplicationContext(), Rings.class);
+                        i.putExtra("id", position);
+                        startActivity(i);
+                        break;
+
+                    case 1:
+                        //Use some different intent here
+                        Intent j = new Intent(getApplicationContext(), Bangles.class);
+                        j.putExtra("id", position);
+                        startActivity(j);
+                        break;
+                    case 2:
+                        //Use some different intent here
+                        Intent k = new Intent(getApplicationContext(), Earrings.class);
+                        k.putExtra("id", position);
+                        startActivity(k);
+                        break;
+                    case 3:
+                        //Use some different intent here
+                        Intent l = new Intent(getApplicationContext(), Necklace.class);
+                        l.putExtra("id", position);
+                        startActivity(l);
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+
+            }
+        });
+
 
 
         init();
@@ -83,6 +132,7 @@ public class MainActivity extends AppCompatActivity
 
 
         // Auto start of viewpager
+        final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
             public void run() {
                 if (currentPage == XMEN.length) {
@@ -91,6 +141,13 @@ public class MainActivity extends AppCompatActivity
                 mPager.setCurrentItem(currentPage++, true);
             }
         };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 2000, 2000);
 
     }
 
