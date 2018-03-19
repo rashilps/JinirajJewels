@@ -31,10 +31,27 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".Rings"></activity>
-        <activity android:name=".Earrings"></activity>
-        <activity android:name=".Bangles"></activity>
-        <activity android:name=".Necklace"></activity>
+        <activity
+            android:name=".Rings"/>
+        <activity
+            android:name=".Earrings"/>
+        <activity
+            android:name=".Bangles"/>
+        <activity
+            android:name=".Necklace"/>
+        <activity
+            android:name=".Mangalsutra"/>
+        <activity
+            android:name=".Pendant"/>
+        <activity android:name=".BanglesPhotoActivity"></activity>
+        <activity android:name=".EarringsPhotoActivity"/>
+        <activity android:name=".RingsPhotoActivity"/>
+        <activity android:name=".MangalsutraPhotoActivity"/>
+        <activity android:name=".NecklacePhotoActivity"/>
+        <activity android:name=".PendantPhotoActivity"/>
+
+
+
     </application>
 
 </manifest>

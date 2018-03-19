@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
     static final int REQUEST_PERMISSION_KEY = 1;
     private static final Integer[] XMEN = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra, R.drawable.necklace, R.drawable.pendant};
     String[] text = {"Rings", "Bangles", "Earrings", "Mangalsutra", "Necklace", "Pendant"};
-    int[] ImageId = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra, R.drawable.necklace, R.drawable.pendant};
+    int[] ImageId = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra2, R.drawable.necklace1, R.drawable.pendant3};
 
     private static ViewPager mPager;
     private static DotsIndicator  dotsIndicator;
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GridView gridView = (GridView) findViewById(R.id.usage_example_gridview);
 
         SimpleImageListAdapter adapter = new SimpleImageListAdapter(MainActivity.this, ImageId, text);
         grid=(GridView)findViewById(R.id.usage_example_gridview);
@@ -78,9 +77,21 @@ public class MainActivity extends AppCompatActivity
                         break;
                     case 3:
                         //Use some different intent here
-                        Intent l = new Intent(getApplicationContext(), Necklace.class);
+                        Intent l = new Intent(getApplicationContext(), Mangalsutra.class);
                         l.putExtra("id", position);
                         startActivity(l);
+                        break;
+                    case 4:
+                        //Use some different intent here
+                        Intent m = new Intent(getApplicationContext(), Necklace.class);
+                        m.putExtra("id", position);
+                        startActivity(m);
+                        break;
+                    case 5:
+                        //Use some different intent here
+                        Intent n = new Intent(getApplicationContext(),Pendant.class);
+                        n.putExtra("id", position);
+                        startActivity(n);
                         break;
 
                     default:
@@ -147,7 +158,7 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 2000, 2000);
+        }, 2500, 2500);
 
     }
 

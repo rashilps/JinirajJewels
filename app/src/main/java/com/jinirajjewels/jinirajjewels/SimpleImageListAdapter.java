@@ -50,7 +50,7 @@ public class SimpleImageListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        View grid;
+       View grid;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -61,7 +61,7 @@ public class SimpleImageListAdapter extends BaseAdapter {
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);
             ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
             textView.setText(text[position]);
-            imageView.setImageResource(ImageId[position]);
+            imageView.setImageBitmap(ImageSizeReducer.decodeSampledBitmapFromResource(mContext.getResources(),ImageId[position],100,100));
         } else {
             grid = (View) convertView;
         }
