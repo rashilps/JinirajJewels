@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -80,7 +81,8 @@ public class Mangalsutra extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(getApplicationContext(), "Pinch to zoom",
+                        Toast.LENGTH_SHORT).show();
                 int position = getAdapterPosition();
                 if(position != RecyclerView.NO_POSITION) {
                     MangalsutraPhoto mangalsutraPhoto = mSpacePhotos[position];

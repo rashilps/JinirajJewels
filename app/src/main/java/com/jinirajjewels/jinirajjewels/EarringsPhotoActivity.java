@@ -4,14 +4,18 @@ package com.jinirajjewels.jinirajjewels;
  * Created by rashil on 11/3/18.
  */
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -26,6 +30,23 @@ import com.bumptech.glide.request.target.Target;
 public class EarringsPhotoActivity extends AppCompatActivity {
 
     public static final String EXTRA_EARRINGS_PHOTO = "EarringsPhotoActivity.EARRINGS_PHOTO";
+    Button button;
+
+    public void init() {
+        button = (Button) findViewById(R.id.MyButton);
+
+        // Capture button clicks
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Contact us through E-mail or Phone",
+                        Toast.LENGTH_SHORT).show();
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(EarringsPhotoActivity.this, BuyNow.class);
+                startActivity(myIntent);
+            }
+        });
+    }
 
     private ImageView mImageView;
 
@@ -36,6 +57,7 @@ public class EarringsPhotoActivity extends AppCompatActivity {
 
         mImageView = (ImageView) findViewById(R.id.image);
         EarringsPhoto earringsPhoto = getIntent().getParcelableExtra(EXTRA_EARRINGS_PHOTO);
+        init();
 
         Glide.with(this)
                 .asBitmap()
