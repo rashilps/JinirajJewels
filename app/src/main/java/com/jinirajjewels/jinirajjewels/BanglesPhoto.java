@@ -52,12 +52,12 @@ public class BanglesPhoto implements Parcelable {
         public static  BanglesPhoto[] getSpacePhotos() {
 
             return new BanglesPhoto[]{
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles1.jpg?alt=media&token=fc9f1904-f4e9-4aca-a58b-31735ea77137", "Space Shuttle"),
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles2.jpg?alt=media&token=e7adfdc3-f24f-4a90-8bd3-a6578e77df56", "Galaxy Orion"),
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles3.jpg?alt=media&token=d72f94bb-b28d-41cb-bd47-915ca4b0dc7f", "Earth"),
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles4.jpg?alt=media&token=782dd5cf-9a48-4721-8e48-1f8c3ef22e4f", "Astronaut"),
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles5.jpg?alt=media&token=520fa3fb-cee8-4ec9-b711-dce73facc383", "Satellite"),
-                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles6.jpg?alt=media&token=c2b605aa-63e6-4e5c-8939-ad69f514ac5e", "Satellite"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles1.jpg?alt=media&token=fc9f1904-f4e9-4aca-a58b-31735ea77137", "Bangle1"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles2.jpg?alt=media&token=e7adfdc3-f24f-4a90-8bd3-a6578e77df56", "Bangle2"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles3.jpg?alt=media&token=d72f94bb-b28d-41cb-bd47-915ca4b0dc7f", "Bangle3"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles4.jpg?alt=media&token=99f7e3ff-4789-480f-b284-a0b3c13f0d0a", "Bangle4"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles5.jpg?alt=media&token=520fa3fb-cee8-4ec9-b711-dce73facc383", "Bangle5"),
+                    new BanglesPhoto("https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles6.jpg?alt=media&token=c2b605aa-63e6-4e5c-8939-ad69f514ac5e", "Bangle6"),
             };
         }
 

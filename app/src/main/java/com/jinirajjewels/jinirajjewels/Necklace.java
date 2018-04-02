@@ -59,7 +59,7 @@ public class Necklace extends AppCompatActivity {
             Glide.with(mContext)
                     .load(necklacePhoto.getUrl())
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.jiniraj))
+                            .placeholder(R.drawable.placeholder))
                     .into(imageView);
         }
 

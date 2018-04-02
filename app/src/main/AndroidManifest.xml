@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jinirajjewels.jinirajjewels">
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -51,6 +50,7 @@
         <activity android:name=".NecklacePhotoActivity"/>
         <activity android:name=".PendantPhotoActivity"/>
         <activity android:name=".BuyNow"/>
+        <activity android:name=".AboutUs"/>
 
 
 

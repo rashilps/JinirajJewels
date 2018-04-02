@@ -59,7 +59,7 @@ public class Earrings extends AppCompatActivity {
             Glide.with(mContext)
                     .load(earringsPhoto.getUrl())
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.jiniraj))
+                            .placeholder(R.drawable.placeholder))
                     .into(imageView);
         }
 

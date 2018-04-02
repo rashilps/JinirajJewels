@@ -59,7 +59,7 @@ public class Pendant extends AppCompatActivity {
             Glide.with(mContext)
                     .load(pendantPhoto.getUrl())
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.jiniraj))
+                            .placeholder(R.drawable.placeholder))
                     .into(imageView);
         }
 

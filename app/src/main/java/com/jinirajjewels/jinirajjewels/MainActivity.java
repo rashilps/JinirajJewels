@@ -3,9 +3,7 @@ package com.jinirajjewels.jinirajjewels;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -27,7 +25,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     static final int REQUEST_PERMISSION_KEY = 1;
-    private static final Integer[] XMEN = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra, R.drawable.necklace, R.drawable.pendant};
+    private static final Integer[] XMEN = {R.drawable.ring1, R.drawable.bangles1, R.drawable.earring3, R.drawable.mangalsutra1, R.drawable.necklace1, R.drawable.pendant3};
     String[] text = {"Rings", "Bangles", "Earrings", "Mangalsutra", "Necklace", "Pendant"};
     int[] ImageId = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra2, R.drawable.necklace1, R.drawable.pendant3};
 
@@ -110,14 +108,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -135,11 +126,9 @@ public class MainActivity extends AppCompatActivity
         for (int i = 0; i < XMEN.length; i++)
             XMENArray.add(XMEN[i]);
 
-        dotsIndicator = (DotsIndicator) findViewById(R.id.dots_indicator);
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyAdapter(MainActivity.this, XMENArray));
-        dotsIndicator.setViewPager(mPager);
 
 
         // Auto start of viewpager
@@ -207,6 +196,10 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this, BuyNow.class);
             startActivity(i);
 
+
+        }else if (id == R.id.nav_about) {
+            Intent i = new Intent(this, AboutUs.class);
+            startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

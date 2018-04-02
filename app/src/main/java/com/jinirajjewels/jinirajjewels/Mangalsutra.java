@@ -59,7 +59,7 @@ public class Mangalsutra extends AppCompatActivity {
             Glide.with(mContext)
                     .load(mangalsutraPhoto.getUrl())
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.jiniraj))
+                            .placeholder(R.drawable.placeholder))
                     .into(imageView);
         }
 

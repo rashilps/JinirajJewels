@@ -35,6 +35,10 @@ public class Bangles extends AppCompatActivity {
 
         Bangles.ImageGalleryAdapter adapter = new Bangles.ImageGalleryAdapter(this, BanglesPhoto.getSpacePhotos());
         recyclerView.setAdapter(adapter);
+        ViewGroup.LayoutParams params=recyclerView.getLayoutParams();
+        params.width=2000;
+        recyclerView.setLayoutParams(params);
+
     }
 
 
@@ -62,7 +66,7 @@ public class Bangles extends AppCompatActivity {
                 Glide.with(mContext)
                         .load(banglesPhoto.getUrl())
                         .apply(new RequestOptions()
-                                .placeholder(R.drawable.jiniraj))
+                                .placeholder(R.drawable.placeholder))
                         .into(imageView);
             }
 
