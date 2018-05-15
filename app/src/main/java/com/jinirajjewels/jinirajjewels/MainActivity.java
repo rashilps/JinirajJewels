@@ -2,38 +2,44 @@ package com.jinirajjewels.jinirajjewels;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     static final int REQUEST_PERMISSION_KEY = 1;
-    private static final Integer[] XMEN = {R.drawable.ring1, R.drawable.bangles1, R.drawable.earring3, R.drawable.mangalsutra1, R.drawable.necklace1, R.drawable.pendant3};
     String[] text = {"Rings", "Bangles", "Earrings", "Mangalsutra", "Necklace", "Pendant"};
     int[] ImageId = {R.drawable.rings, R.drawable.bangles, R.drawable.earrings, R.drawable.mangalsutra2, R.drawable.necklace1, R.drawable.pendant3};
-
+    private String[] imageUrls = new String[]{
+            "https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/necklace1.jpg?alt=media&token=cabe073a-826f-49b2-adaa-cc2916389fc7",
+            "https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/bangles4%20(1).jpg?alt=media&token=a3d39858-db3e-4b8e-8dd8-898e35824070",
+            "https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/earring3.jpg?alt=media&token=6391fc18-6fa6-4a03-ab43-335f814b1d84",
+            "https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/IMG-20170203-WA0073.jpg?alt=media&token=6375e934-4741-4f7a-ab57-e500e8174fa1",
+            "https://firebasestorage.googleapis.com/v0/b/jinirajjewels.appspot.com/o/ring15.jpg?alt=media&token=e7ed589c-961b-4d60-bd1f-245cc722912d"
+    };
     private static ViewPager mPager;
     private static DotsIndicator  dotsIndicator;
     private static int currentPage = 0;
     GridView grid;
-
+    LinearLayout sliderDotspanel;
+    private int dotscount;
+    private ImageView[] dots;
 
 
 
@@ -44,6 +50,51 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ViewPager viewPager = findViewById(R.id.pager);
+        ViewPagerAdapter adapter1 = new ViewPagerAdapter(this, imageUrls);
+        viewPager.setAdapter(adapter1);
+
+        sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
+
+        dotscount = adapter1.getCount();
+        dots = new ImageView[dotscount];
+        for(int i = 0; i < dotscount; i++){
+
+            dots[i] = new ImageView(this);
+            dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.non_active_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(8, 0, 8, 0);
+
+            sliderDotspanel.addView(dots[i], params);
+
+        }
+
+        dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.non_active_dot));
+                }
+
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         SimpleImageListAdapter adapter = new SimpleImageListAdapter(MainActivity.this, ImageId, text);
         grid=(GridView)findViewById(R.id.usage_example_gridview);
@@ -103,7 +154,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        init();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -122,35 +173,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void init() {
-        for (int i = 0; i < XMEN.length; i++)
-            XMENArray.add(XMEN[i]);
-
-
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPager.setAdapter(new MyAdapter(MainActivity.this, XMENArray));
-
-
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == XMEN.length) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 2500, 2500);
-
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -161,12 +183,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
